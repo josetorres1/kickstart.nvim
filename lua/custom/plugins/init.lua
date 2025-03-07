@@ -30,6 +30,19 @@ return {
       }
     end,
   },
-  { 'f-person/auto-dark-mode.nvim' },
-  { 'f-person/git-blame.nvim', event = 'VeryLazy' },
+  {
+    'f-person/auto-dark-mode.nvim',
+    lazy = false,
+    opts = {
+      set_dark_mode = function()
+        vim.api.nvim_set_option_value('background', 'dark', {})
+      end,
+      set_light_mode = function()
+        vim.api.nvim_set_option_value('background', 'light', {})
+      end,
+      update_interval = 1000,
+      fallback = 'dark',
+    },
+  },
+  -- { 'f-person/git-blame.nvim', event = 'VeryLazy' },
 }
